@@ -85,6 +85,10 @@ public interface FilterOrdered {
      * pgv validation ordered
      */
     int PGV_VALIDATION_ORDERED = Ordered.HIGHEST_PRECEDENCE + 40000;
+    /**
+     * protovalidate validation ordered
+     */
+    int PROTOVALIDATE_VALIDATION_ORDERED = Ordered.HIGHEST_PRECEDENCE + 40000;
 
     /**
      * provider knock auth ordered

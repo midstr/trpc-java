@@ -1,0 +1,35 @@
+/*
+ * Tencent is pleased to support the open source community by making tRPC available.
+ *
+ * Copyright (C) 2023 THL A29 Limited, a Tencent company.
+ * All rights reserved.
+ *
+ * If you have downloaded a copy of the tRPC source code from Tencent,
+ * please note that tRPC source code is licensed under the Apache 2.0 License,
+ * A copy of the Apache 2.0 License can be found in the LICENSE file.
+ */
+
+
+syntax = "proto3";
+
+// trpc 命命规则
+package trpc.validation.helloworld;
+// 引入对应规则文件
+import "buf/validate/validate.proto";
+
+option java_package = "com.tencent.trpc.validation.protovalidate";
+option java_generic_services = false;
+option java_multiple_files = false;
+option java_outer_classname = "HelloWorldProto";
+
+// 参数
+message HelloWorld {
+  // 规则示例，name 长度要 >= 2
+  string msg = 1 [(buf.validate.field).string.min_len = 2];
+  string email = 2 [(buf.validate.field).string.email = true];
+}
+
+// 定义tRPC服务接口
+service Greeter {
+  rpc HelloWorldRequest (HelloWorld) returns (HelloWorld) {}
+}

@@ -89,6 +89,10 @@
         <protobuf-bom.version>3.25.5</protobuf-bom.version>
         <pgv.version>0.4.1</pgv.version>
         <pgv.bin.version>0.6.13</pgv.bin.version>
+        <!-- The protovalidate version depends on the protobuf version. Due to the incompatibility -->
+        <!-- between pb-java3.x and 4.x, pb-3.x can only use the highest protovalidate version of 0.2.1 -->
+        <!-- (as of 202502, there is already 0.5.0)  -->
+        <protovalidate.version>0.2.1</protovalidate.version>
         <quasar.version>0.7.9</quasar.version>
         <reflections.version>0.9.12</reflections.version>
         <resteasy.version>5.0.6.Final</resteasy.version>
@@ -702,6 +706,12 @@
                 <groupId>io.envoyproxy.protoc-gen-validate</groupId>
                 <artifactId>pgv-java-stub</artifactId>
                 <version>${pgv.version}</version>
+            </dependency>
+            <!--protovalidate opensource dependencies-->
+            <dependency>
+                <groupId>build.buf</groupId>
+                <artifactId>protovalidate</artifactId>
+                <version>${protovalidate.version}</version>
             </dependency>
             <!--opensource dependencies end-->
             <!--test dependencies-->
